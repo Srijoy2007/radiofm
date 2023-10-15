@@ -1,9 +1,27 @@
-import Image from 'next/image'
+// pages/index.js
+'use client'
+import React, { useState } from 'react';
+import MediaPlayer from '../app/radioplayer';
+import RadioStations from '../app/radiostation';
+import PlayPauseButton from '../app/radiocontrol';
+import Layout from '../app/layout';
 
-export default function Home() {
+const Index = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      
-    </main>
-  )
-}
+    <Layout>
+      <div className="page-content">
+        <MediaPlayer isPlaying={isPlaying} />
+        <RadioStations />
+        <PlayPauseButton isPlaying={isPlaying} togglePlay={togglePlay} />
+      </div>
+    </Layout>
+  );
+};
+
+export default Index;

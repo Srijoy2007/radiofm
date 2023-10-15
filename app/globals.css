@@ -25,3 +25,18 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+// styles/globals.css
+.fm-connection {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px 0;
+}
+
+.fm-line {
+  display: inline-block;
+  height: 5px;
+  width: 30px;
+  background-color: #fff;
+  margin: 0 5px;
+}

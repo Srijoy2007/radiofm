@@ -1,15 +1,26 @@
+// components/MediaPlayer.js
 import React from 'react';
+import { motion } from 'framer-motion';
 
-const RadioPlayer = ({station}) => {
-    return (
-        <div className='radio-player'>
-            <audio controls autoPlay>
-                <source src={station.url} type='audio/mpeg'/>
-                Apka browser yeh gana support nahi karta
-            </audio>
+const MediaPlayer = ({ isPlaying }) => {
+  const audioRef = React.useRef();
 
-        </div>
-    )
+  React.useEffect(() => {
+    if (isPlaying) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isPlaying]);
 
+  return (
+    <div className="media-player">
+      <audio ref={audioRef} preload="auto">
+        <source src="\music.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  );
+};
 
-}
+export default MediaPlayer;
